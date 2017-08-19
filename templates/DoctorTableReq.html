@@ -1,0 +1,94 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+
+
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+             			Doctor Information
+                    </header>
+
+
+                      <span class="tools pull-right">
+                            <a href="{{url_for('add_doctor')}}"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    <div class="panel-body">
+                    <div class="adv-table">
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Surname</th>
+			<th scope="col">E-Mail</th>
+			<th scope="col">Phone</th>
+			<th scope="col">specification</th>
+            <th scope="col">status</th>
+
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for contact in contacts %}
+		<tr>
+			<td>{{ contact.name }}</td>
+			<td>{{ contact.surname }}</td>
+			<td>{{ contact.email }}</td>
+			<td>{{ contact.phone }}</td>
+			<td>{{contact.specification}}</td>
+            <td> {{contact.accepted }}</td>
+		
+
+		<td class="text-right">
+				<div class="row">
+					
+				<td>
+						<a class="btn btn-success pull-info" href="{{ url_for('doctorView', id=contact.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        </td>
+                        {% if contact.accepted == 'Pending' and session['admin'] %}
+                        <td>
+                        <a class="btn btn-success pull-info" href="{{ url_for('approveDoctorProfile', id=contact.id) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </td>
+                        {% endif %}
+
+
+                      
+
+
+
+				</div>
+			</td>
+			</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+<div class="right-sidebar">
+<div class="search-row">
+    <input type="text" placeholder="Search" class="form-control">
+</div>
+<div class="right-stat-bar">
+<ul class="right-side-accordion">
+<li class="widget-collapsible">
+    
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row side-mini-stat clearfix">                
+                <div class="side-mini-graph">
+                    <div class="target-sell">
+                    </div>
+                </div>
+            </div>         
+        </li>
+    </ul>
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

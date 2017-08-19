@@ -1,0 +1,86 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                 <div class="panel panel-info">
+                 <div class="panel-heading">View Service Request
+                 </div>
+                     <div class="panel-body">
+                    <div class=" form">
+                        <form class="cmxform form-horizontal " id="commentForm" method = "POST" action="">
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Doctor Name</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="docname" name="docname" minlength="2" type="text" placeholder="{{ view.customername}}" disabled  />
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Service Category</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="servcat" name="servcat" minlength="2" type="text" placeholder="{{ view.servicecatagory}}" disabled  />
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Vendor Name</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="vname" name="vname" minlength="2" type="text" placeholder="{{view.vendor}}" disabled />
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Vendor Product</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="vproduct" name="vproduct" minlength="2" type="text" placeholder="{{ view.product}}" disabled  />
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Date & Time</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="dateTime" name="dateTime" minlength="2" type="text" placeholder="{{ view.Dateofservice}}; {{ view.timeofservice}}" disabled />
+                                </div>
+                            </div>
+
+                             <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Remarks</label>
+                                <div class="col-lg-6">
+                                    <textarea class="form-control"  placeholder="{{ view.specialrequest}}" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="cname" class="control-label col-lg-3">Status</label>
+                                <div class="col-lg-6">
+                                     <select class="form-control" minlength="2" name="servstatus">
+                                        <option>Approve</option>
+                                        <option>Deny</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                    <button class="btn btn-default" type="button" onclick="reload_page()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> <!-- panel body -->
+                 </div> <!-- panel-default -->
+            </div> <!-- col-sm-8 col-sm-offset-2 -->
+
+            <div class="col-sm-2"></div>
+        </div> <!-- row -->
+        <!-- page end-->
+        </section>
+   
+{% endblock %}
+

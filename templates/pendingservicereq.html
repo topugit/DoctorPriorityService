@@ -1,0 +1,58 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+    <!--main content start-->
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Service Request
+                        
+                    </header>
+                    <div class="panel-body">
+                    <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Service Category</th>
+                        <th>Vendor Name</th>
+                        <th>Vendor Product</th>
+                        <th>Date-Time</th>
+                        <th>Remakrs</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for servicereuest in servicereuests %}
+                    <tr class="gradeX">
+
+                    
+                        <td> {{ servicereuest.customername}}e</td>
+                        <td> {{ servicereuest.servicecatagory}}</td>
+                        <td> {{ servicereuest.vendor}}</td>
+                        <td>{{ servicereuest.product}}</td>
+                        <td> {{ servicereuest.Dateofservice}} {{ servicereuest.timeofservice}}</td>
+                        <td> {{servicereuest.specialrequest }}</td>
+                        <td> {{ servicereuest.active}}</td>
+                        {% if  servicereuest.active == 'Pending' and session['admin'] %}
+                         <td><a href="{{ url_for('viewlistofservicereq', id=servicereuest.id) }}"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                         {% else %} <td>{{ servicereuest.active}}</td>
+                        {% endif %}
+                       
+                    </tr>
+                          {% endfor %}
+                    </table>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- page end-->
+
+{% endblock %}

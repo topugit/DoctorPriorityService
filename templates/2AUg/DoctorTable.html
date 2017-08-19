@@ -1,0 +1,164 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--
+       
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+             			Doctor Information
+                    </header>
+
+
+                      <span class="tools pull-right">
+                            <a href="{{url_for('add_doctor')}}"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    <div class="panel-body">
+                    <div class="adv-table">
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Surname</th>
+			<th scope="col">E-Mail</th>
+			<th scope="col">Phone</th>
+			<th scope="col">specification</th>
+
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for contact in contacts %}
+		<tr>
+			<td>{{ contact.name }}</td>
+			<td>{{ contact.surname }}</td>
+			<td>{{ contact.email }}</td>
+			<td>{{ contact.phone }}</td>
+			<td>{{contact.specification}}</td>
+		
+
+		<td class="text-right">
+				<div class="row">
+					
+				
+						<a class="btn btn-success pull-info" href="{{ url_for('doctorView', id=contact.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+
+                      <td>
+
+                       <a class="btn btn-primary pull-right" href="{{ url_for('editproffile', id=contact.id) }}">Edit</a> </td>
+
+  						  {% if session['admin']:%}
+                        <td>
+                      
+
+                        <form action="{{ url_for('Doctor_delete') }}" method="post" class="pull-right">
+						<input type="hidden" name="id" value="{{ contact.id }}">
+
+					
+					<button class="btn btn-danger" type="submit" data-toggle="confirmation" href = "{{url_for('Doctor_delete', id = contact.id) }}" method="post" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+					</form>
+                        </td>
+                        {% endif%}
+
+                      
+
+
+
+				</div>
+			</td>
+			</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+</div>
+</div>
+</section>
+
+
+
+-->
+
+
+ <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Member Area
+                        <span class="tools pull-right">
+                            <a href="/Addmember"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                    <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+			<th scope="col">Surname</th>
+			<th scope="col">E-Mail</th>
+			<th scope="col">Phone</th>
+			<th scope="col">specification</th>
+			<th scope="col">View</th>
+			<th scope="col">Edit</th>
+			 {% if session['admin']:%}
+			<th scope="col">Remove</th>
+			{% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+	{% for contact in contacts %}
+		<tr>
+			<td>{{ contact.name }}</td>
+			<td>{{ contact.surname }}</td>
+			<td>{{ contact.email }}</td>
+			<td>{{ contact.phone }}</td>
+			<td>{{contact.specification}}</td>
+		
+
+		<td class="text-right">
+				<div class="row">
+					
+				
+						<a class="btn btn-success pull-info" href="{{ url_for('doctorView', id=contact.id) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+<!--
+                        <td><button class="btn btn-primary" href = "{{ url_for('editproffile', id = contact.id)}}" type="submit" method = "post"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                        -->
+
+                      <td>
+
+                       <a class="btn btn-primary pull-right" href="{{ url_for('editproffile', id=contact.id) }}">Edit</a> </td>
+
+  						  {% if session['admin']:%}
+                        <td>
+                      
+
+                        <form action="{{ url_for('Doctor_delete') }}" method="post" class="pull-right">
+						<input type="hidden" name="id" value="{{ contact.id }}">
+
+					<!--	<input type="submit" class="btn btn-danger" data-toggle="confirmation" {# data-title="¿Estas seguro?" #} value="Delete" <i class="fa fa-trash-o" aria-hidden="true"></i> -->
+					<button class="btn btn-danger" type="submit" data-toggle="confirmation" href = "{{url_for('Doctor_delete', id = contact.id) }}" method="post" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+					</form>
+                        </td>
+                        {% endif%}
+
+                      
+
+
+
+				</div>
+			</td>
+			</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+	</div>
+</div>
+</section>
+</div>
+</div>
+
+{% endblock %}

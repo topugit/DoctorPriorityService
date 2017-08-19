@@ -1,0 +1,61 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                 <div class="panel panel-info">
+                 <div class="panel-heading">Vendor's Product.
+                 </div>
+                     <div class="panel-body">
+                    <div class=" form">
+                        <form class="cmxform form-horizontal " id="commentForm" method="POST" action="">
+                            <div class="form-group ">
+                                <label for="action" class="control-label col-lg-3">Vendor Name</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" minlength="2" name="vname">
+                                    {% for vendor in vendors%}
+                                        <option>{{ vendor.vendor_name}}</option>
+                
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>   
+
+                             <div class="form-group ">
+                                <label for="vproduct" class="control-label col-lg-3">Vendor Product</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="vproduct" name="vproduct" minlength="2" type="text" placeholder=""/>
+                                </div>
+                            </div>  
+
+                            <div class="form-group ">
+                                <label for="productprice" class="control-label col-lg-3"> Product Price</label>
+                                <div class="col-lg-6">
+                                    <input class=" form-control" id="productprice" name="productprice" minlength="2" type="text" placeholder=""/>
+                                </div>
+                            </div>  
+                        
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-6">
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                    <button class="btn btn-default" type="button">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> <!-- panel body -->
+                 </div> <!-- panel-default -->
+            </div> <!-- col-sm-8 col-sm-offset-2 -->
+
+            <div class="col-sm-2"></div>
+        </div> <!-- row -->
+        <!-- page end-->
+        </section>
+    
+
+{% endblock %}
+

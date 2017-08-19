@@ -1,0 +1,4 @@
+*.sqlite
+*.py
+*.python
+*.csv

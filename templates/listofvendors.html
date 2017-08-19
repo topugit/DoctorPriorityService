@@ -1,0 +1,54 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Member Area
+                        <span class="tools pull-right">
+                            <a href="/addvendors"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                    <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    <thead>
+                    <tr>
+                        <th>Vendor Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <!--
+                        <th>View</th>-->
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vendor in vendors%}
+                    <tr class="gradeX">
+                        <td>{{ vendor.vendor_name}}</td>
+                        <td> {{ vendor.vendor_email}}</td>
+                        <td>{{ vendor.vebdor_phone}}</td>
+                        <td>{{ vendor.Vendor_address}}</td>
+                        <!--
+                        <td><a href="viewmember.php"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                        -->
+                        <td><a href="{{ url_for('editvendor', id = vendor.id)}}"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
+                        <td> <a href="{{ url_for('deleteVendor', id =vendor.id ) }}"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> </a></td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- page end-->
+      
+{% endblock %}

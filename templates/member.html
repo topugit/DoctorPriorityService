@@ -1,0 +1,75 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+    <!--main content start-->
+ 
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Member Area
+                        <span class="tools pull-right">
+                            <a href="/Addmember"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                    <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>View</th>
+                         {% if session['admin']%}
+                        <th>Edit</th>
+                        
+                        <th>Delete</th>
+                         
+                        <th> Admin </th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for member in members  %}
+                    <tr class="gradeX">
+                        <td>{{ member.username }}</td>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.surname }}</td>
+                        <td>{{ member.email }}</td>
+                        <td>{{ member.phone }}</td>
+                        <td><a href="{{ url_for('viewmember',id = member.id)}}"><button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                        {% if session['admin']%}
+                        <td> <a href="{{ url_for('editmember', id = member.id)}}"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
+                        
+                        <td> <a href="{{ url_for('member_delete', id = member.id)}}"><button  class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></a>
+                    
+                        <td>
+                         {% if member.active == 0  %}
+                        <a
+                        <button type="button" href = "{{ url_for('makeadmin', id = member.id) }}" class="btn btn-info"  >Make Admim </button> </a>
+                        
+                        {% else %} 
+                            Admin
+                          {% endif%}
+                        </td>
+                        {% endif %}
+                      
+
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- page end-->
+{% endblock %}

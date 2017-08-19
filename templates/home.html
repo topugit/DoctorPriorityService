@@ -1,0 +1,227 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+    <!--main content start-->
+    
+        <!-- page start-->
+			<div class="row">
+			<div class="col-sm-12">
+				<div class="text-right">
+				<a href="/createservicereq"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New Service Request</button></a>
+			</div>
+			</div>
+			<br><br><br><br>
+	          <div class="col-lg-3 col-xs-6">
+	            <div class="small-box bg-blue-active">
+	                <div class="inner">
+	                <h3>{{ total}}</h3>
+	                	<p>Total Request</p>
+	              	</div>
+	             	<div class="icon">
+	               		 <i class="glyphicon glyphicon glyphicon-hand-left"></i>
+	             	</div>
+	              	<a href="/pendingservicereq" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+                </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		         <div class="small-box bg-green">
+	              <div class="inner">
+	                <h3><span id="totalAcceptedUndeliveredOrders">{{totalApprove}}</span></h3>
+	                <p>Total Approved Request</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-ok-circle"></i>
+	              </div>
+	              <a href="/Approvependingservicereq" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		          <div class="small-box bg-yellow">
+	              <div class="inner">
+	                <h3><span id="totalPendingOrders">{{ totalpending}}</span></h3>
+	                <p>Total Pending Request</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-time"></i>
+	              </div>
+	              <a href="/pendingpendingservicereq" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		          <div class="small-box bg-red">
+	              <div class="inner">
+	                <h3><span id="totalCanceledOrders">{{ totalDeny}}</span></h3>
+	                <p>Canceled Orders</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-remove"></i>
+	              </div>
+	              <a href="/denypendingservicereq" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	        </div><!-- ./row -->
+<br><br><br><br><br>
+	<!-- user reporting area -->
+	        <div class="row">
+	          <div class="col-lg-4 col-xs-6">
+	            <div class="small-box bg-blue-active">
+	                <div class="inner">
+	                <h3>{{ totalbymember }}</h3>
+	                	<p>Total Processed by {{ session['name']}}</p>
+	              	</div>
+	             	<div class="icon">
+	               		 <i class="glyphicon glyphicon glyphicon-hand-left"></i>
+	             	</div>
+	              	<a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+                </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-4 col-xs-6">
+		         <div class="small-box bg-green">
+	              <div class="inner">
+	                <h3><span id="totalAcceptedUndeliveredOrders"> {{ totalApproveformember}}</span></h3>
+	                <p>Total Approved by {{ session['name']}}</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-ok-circle"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-4 col-xs-6">
+		          <div class="small-box bg-red">
+	              <div class="inner">
+	                <h3><span id="totalCanceledOrders">{{ totaldenyformember}}</span></h3>
+	                <p>Total Request Cancelled by {{ session['name']}}</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-remove"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	        </div><!-- ./row -->
+        <!-- page end-->
+        </section>
+
+
+
+
+
+
+<h1>  Doctor Reqtest </h1>
+
+
+
+
+
+<br> <br> <br> <br> <br> <br> <br> 
+
+
+
+<section class="wrapper">
+        <!-- page start-->
+			<div class="row">
+			<div class="col-sm-12">
+				<div class="text-right">
+				<a href=""><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add New Service Request</button></a>
+			</div>
+			</div>
+			<br><br><br><br>
+	          <div class="col-lg-3 col-xs-6">
+	            <div class="small-box bg-blue-active">
+	                <div class="inner">
+	                <h3>{{ dtotal}}</h3>
+	                	<p>Total Request</p>
+	              	</div>
+	             	<div class="icon">
+	               		 <i class="glyphicon glyphicon glyphicon-hand-left"></i>
+	             	</div>
+	              	<a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+                </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		         <div class="small-box bg-green">
+	              <div class="inner">
+	                <h3><span id="totalAcceptedUndeliveredOrders">{{dtotalApprove}}</span></h3>
+	                <p>Total Approved Request</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-ok-circle"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		          <div class="small-box bg-yellow">
+	              <div class="inner">
+	                <h3><span id="totalPendingOrders">{{ dtotalpending}}</span></h3>
+	                <p>Total Pending Request</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-time"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-3 col-xs-6">
+		          <div class="small-box bg-red">
+	              <div class="inner">
+	                <h3><span id="totalCanceledOrders">{{ dtotalDeny}}</span></h3>
+	                <p>Canceled Orders</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-remove"></i>
+	              </div>
+	              <a href="http://35.162.97.16/pharmacy-orders/3" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	        </div><!-- ./row -->
+<br><br><br><br><br>
+	<!-- user reporting area -->
+	        <div class="row">
+	          <div class="col-lg-4 col-xs-6">
+	            <div class="small-box bg-blue-active">
+	                <div class="inner">
+	                <h3>{{ totalbymember }}</h3>
+	                	<p>Total Processed by {{ session['name']}}</p>
+	              	</div>
+	             	<div class="icon">
+	               		 <i class="glyphicon glyphicon glyphicon-hand-left"></i>
+	             	</div>
+	              	<a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+                </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-4 col-xs-6">
+		         <div class="small-box bg-green">
+	              <div class="inner">
+	                <h3><span id="totalAcceptedUndeliveredOrders"> {{ dtotalApproveformember}}</span></h3>
+	                <p>Total Approved by {{ session['name']}}</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-ok-circle"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	          <div class="col-lg-4 col-xs-6">
+		          <div class="small-box bg-red">
+	              <div class="inner">
+	                <h3><span id="totalCanceledOrders">{{ dtotaldenyformember}}</span></h3>
+	                <p>Total Request Cancelled by {{ session['name']}}</p>
+	              </div>
+	              <div class="icon">
+	                <i class="glyphicon glyphicon-remove"></i>
+	              </div>
+	              <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i> &nbsp; view all</a>
+	            </div>
+	          </div><!-- ./col -->
+	        </div><!-- ./row -->
+        <!-- page end-->
+       
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+
+{% endblock %}
