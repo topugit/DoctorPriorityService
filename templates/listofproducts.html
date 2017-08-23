@@ -1,0 +1,53 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<!--sidebar end-->
+    <!--main content start-->
+
+        <!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Vendor Product List
+                        <span class="tools pull-right">
+                            <a href="/addvendorproduct"><button type="button" class="btn btn-success addBtn"><i class="fa fa-plus"></i> Add New </button></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                    <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                    <thead>
+                    <tr>
+                        <th>Vendor Name</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products%}
+                    <tr class="gradeX">
+                        <td>{{ product.vendor_name}}</td>
+                        <td>{{ product.vendor_product}}</td>
+                        <td>{{ product.vendor_price}}</td>
+                        <td><a href="{{ url_for('editvendorproduct', id = product.id)}}"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                        </td>
+                        <td>
+                        <a href="{{ url_for('deleteproduct',id = product.id)}}">
+                        <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a></td>
+                    </tr>
+                    {% endfor %}
+                     
+                    </table>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- page end-->
+       
+{% endblock %}
